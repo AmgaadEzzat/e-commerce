@@ -36,6 +36,8 @@ Route::group(
                 Route::put('shipping-method/{id}',
                     [SettingController::class, 'updateShippingMethod'])
                 ->name('update-shipping-method');
+                Route::get('logout', [LoginController::class, 'logout'])
+                    ->name('admin.logout');
             });
         });
 
