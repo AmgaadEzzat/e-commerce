@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashBoard\AdminController;
 use App\Http\Controllers\DashBoard\LoginController;
+use App\Http\Controllers\DashBoard\ProfileController;
 use App\Http\Controllers\DashBoard\SettingController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -23,9 +24,6 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function() {
-        Route::get('test', function() {
-            return 'test';
-        });
         Route::group(['namespace' => 'DashBoard', 'middleware' => 'auth:admin',
             'prefix' => 'admin'], function() {
             Route::get('/', [AdminController::class, 'index'])->name('admin.index');
@@ -38,6 +36,12 @@ Route::group(
                 ->name('update-shipping-method');
                 Route::get('logout', [LoginController::class, 'logout'])
                     ->name('admin.logout');
+            });
+            Route::group(['prefix' => 'profile'], function() {
+                Route::get('editProfile', [ProfileController::class, 'editProfile'])
+                    ->name('admin.profile');
+                Route::put('update', [ProfileController::class, 'updateProfile'])
+                    ->name('update.admin.profile');
             });
         });
 
