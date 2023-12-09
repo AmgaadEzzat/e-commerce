@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DashBoard\AdminController;
+use App\Http\Controllers\DashBoard\BrandController;
+use App\Http\Controllers\DashBoard\CategoriesController;
 use App\Http\Controllers\DashBoard\LoginController;
 use App\Http\Controllers\DashBoard\ProfileController;
 use App\Http\Controllers\DashBoard\SettingController;
@@ -42,6 +44,36 @@ Route::group(
                     ->name('admin.profile');
                 Route::put('update', [ProfileController::class, 'updateProfile'])
                     ->name('update.admin.profile');
+            });
+            ////////////////////////////category routes///////////////
+            Route::group(['prefix' => 'category'], function() {
+                Route::get('/', [CategoriesController::class, 'index'])
+                    ->name('get.all.categories');
+                Route::get('create', [CategoriesController::class, 'create'])
+                    ->name('create.category');
+                Route::post('store', [CategoriesController::class, 'store'])
+                    ->name('store.category');
+                Route::get('edit/{id}', [CategoriesController::class, 'edit'])
+                    ->name('edit.category');
+                Route::post('update/{id}', [CategoriesController::class, 'update'])
+                    ->name('update.category');
+                Route::get('delete/{id}', [CategoriesController::class, 'delete'])
+                    ->name('delete.category');
+            });
+            ////////////////////////////Brands///////////////////////
+            Route::group(['prefix' => 'brand'], function() {
+                Route::get('/', [BrandController::class, 'index'])
+                    ->name('get.all.brands');
+                Route::get('create', [BrandController::class, 'create'])
+                    ->name('create.brand');
+                Route::post('store', [BrandController::class, 'store'])
+                    ->name('store.brand');
+                Route::get('edit/{id}', [BrandController::class, 'edit'])
+                    ->name('edit.brand');
+                Route::post('update/{id}', [BrandController::class, 'update'])
+                    ->name('update.brand');
+                Route::get('delete/{id}', [BrandController::class, 'destroy'])
+                    ->name('delete.brand');
             });
         });
 
