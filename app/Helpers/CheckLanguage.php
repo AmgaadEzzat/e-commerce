@@ -2,6 +2,8 @@
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+const PAGINATION_COUNT = 15;
+
 function getCurrentLanguage(): string
 {
     return app()->getLocale() == 'ar' ? 'css-rtl' : 'css';
@@ -15,3 +17,4 @@ function getAllLocale(): array
 
     return $availableLocales;
 }
+
