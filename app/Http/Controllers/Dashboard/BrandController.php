@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\DashBoard;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BrandRequest;
