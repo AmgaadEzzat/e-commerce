@@ -28,7 +28,8 @@ Route::group(
     ], function() {
         Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth:admin',
             'prefix' => 'admin'], function() {
-            Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+            Route::get('/', [AdminController::class, 'index'])
+                ->name('admin.index');
             Route::group(['prefix' => 'setting'], function() {
                 Route::get('shipping-method/{type}',
                     [SettingController::class, 'editShippingMethod'])
