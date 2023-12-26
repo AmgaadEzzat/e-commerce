@@ -12,7 +12,8 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = Category::mainCategories()->paginate(PAGINATION_COUNT);
+        $categories = Category::with('_parent')->orderBy('id','DESC')->
+        paginate(PAGINATION_COUNT);
 
         return view('admin.categories.index', compact('categories'));
     }

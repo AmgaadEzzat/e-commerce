@@ -11,4 +11,10 @@ return [
     'Status' => 'Status',
     'Product' => 'Product',
     'Evaluation' => 'Evaluation',
+    'Add' => 'Add',
+    'Back' => 'Back',
+    'Update' => 'Update',
+    'Edit' => 'Edit',
+    'Delete' => 'Delete',
+    'Name' => 'Name',
 ];
