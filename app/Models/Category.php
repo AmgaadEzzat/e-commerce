@@ -18,35 +18,29 @@ class Category extends Model
     protected $hidden = ['translations'];
     protected $casts = ['is_active' => 'boolean'];
 
-    public function scopeMainCategories($query)
-    {
-        return $query->whereNull('parent_id');
-    }
-
-    public function scopeSubCategories($query)
-    {
-        return $query->whereNotNull('parent_id');
-    }
-
     public function getActive()
     {
         return $this->is_active == 0 ? __('admin/category.Enable')
             : __('admin/category.Disable');
     }
 
-    public function scopeParent($query){
+    public function scopeParent($query)
+    {
         return $query -> whereNull('parent_id');
     }
 
-    public function scopeChild($query){
+    public function scopeChild($query)
+    {
         return $query -> whereNotNull('parent_id');
     }
 
-    public function _parent(){
+    public function _parent()
+    {
         return $this->belongsTo(self::class, 'parent_id');
     }
 
-    public function childrens(){
+    public function childrens()
+    {
         return $this -> hasMany(Self::class,'parent_id');
     }
 

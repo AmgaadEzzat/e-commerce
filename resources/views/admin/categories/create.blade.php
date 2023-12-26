@@ -140,35 +140,34 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-1">
+                                                            <input type="radio"
+                                                                   name="type"
+                                                                   value="1"
+                                                                   checked
+                                                                   class="switchery"
+                                                                   data-color="success"/>
+                                                            <label
+                                                                class="card-title ml-1">
+                                                                {{__('admin/category.Category')}}
+                                                            </label>
 
-                                            <div class="col-md-3">
-                                                <div class="form-group mt-1">
-                                                    <input type="radio"
-                                                           name="type"
-                                                           value="1"
-                                                           checked
-                                                           class="switchery"
-                                                           data-color="success"/>
-                                                    <label
-                                                        class="card-title ml-1">
-                                                        {{__('admin/category.Category')}}
-                                                    </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-1">
+                                                            <input type="radio"
+                                                                   name="type"
+                                                                   value="2"
+                                                                   class="switchery" data-color="success"/>
+                                                            <label
+                                                                class="card-title ml-1">
+                                                                {{__('admin/category.Subcategory')}}
+                                                            </label>
 
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group mt-1">
-                                                    <input type="radio"
-                                                           name="type"
-                                                           value="2"
-                                                           class="switchery" data-color="success"/>
-                                                    <label
-                                                        class="card-title ml-1">
-                                                        {{__('admin/category.Subcategory')}}
-                                                    </label>
-
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-actions">

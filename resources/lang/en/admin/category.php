@@ -22,5 +22,5 @@ return [
     'Choose the main category' => 'Choose the main category',
     'Please choose the category' => 'Please choose the category',
     'Category' => 'Category',
-    'Subcategory' => 'Subcategory'
+    'Subcategory' => 'Subcategory',
 ];
