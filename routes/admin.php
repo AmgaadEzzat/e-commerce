@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\LoginController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\SettingController;
+use App\Http\Controllers\Dashboard\SliderController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -100,6 +101,16 @@ Route::group(
                     ->name('admin.products.images.store');
                 Route::post('images/db', 'ProductsController@saveProductImagesDB')
                     ->name('admin.products.images.store.db');
+            });
+            /////////////////////////////sliders////////////////////////
+            Route::group(['prefix' => 'sliders'], function () {
+                Route::get('/', [SliderController::class, 'addImages'])
+                    ->name('admin.sliders.create');
+                Route::post('images', [SliderController::class, 'saveSliderImages'])
+                    ->name('admin.sliders.images.store');
+                Route::post('images/db', [SliderController::class, 'saveSliderImagesDB'])
+                    ->name('admin.sliders.images.store.db');
+
             });
         });
 

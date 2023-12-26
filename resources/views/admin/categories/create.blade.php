@@ -8,7 +8,7 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="">الرئيسية </a>
+                                <li class="breadcrumb-item"><a href="">{{__('admin/category.Main')}}</a>
                                 </li>
                                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">
                                         {{__('admin/category.Main categories')}} </a>
@@ -60,17 +60,18 @@
                                             </div>
 
                                             <div class="form-body">
-
-                                                <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i>
+                                                    {{__('admin/category.Data category')}}</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم القسم
+                                                            <label for="projectinput1">
+                                                                {{__('admin/category.Category name')}}
                                                             </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{old('name')}}"
+                                                                   value=""
                                                                    name="name">
                                                             @error("name")
                                                             <span class="text-danger">{{$message}}</span>
@@ -80,12 +81,13 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم بالرابط
+                                                            <label for="projectinput1">
+                                                                {{__('admin/category.Slug')}}
                                                             </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{old('slug')}}"
+                                                                   value=""
                                                                    name="slug">
                                                             @error("slug")
                                                             <span class="text-danger">{{$message}}</span>
@@ -93,6 +95,34 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="row hidden" id="cats_list" >
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">
+                                                                {{__('admin/category.Choose the main category')}}
+                                                            </label>
+                                                            <select name="parent_id" class="select2 form-control">
+                                                                <optgroup label="
+                                                                {{__('admin/category.Please choose the category')}}">
+                                                                    @if($categories && $categories -> count() > 0)
+                                                                        @foreach($categories as $category)
+                                                                            <option
+                                                                                value="{{$category -> id }}">
+                                                                                {{$category -> name}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('parent_id')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group mt-1">
@@ -102,7 +132,8 @@
                                                                    class="switchery" data-color="success"
                                                                    checked />
                                                             <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة  </label>
+                                                                   class="card-title ml-1">
+                                                                {{__('admin/category.Status')}}</label>
 
                                                             @error("is_active")
                                                             <span class="text-danger">{{$message }}</span>
@@ -112,7 +143,34 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-md-3">
+                                                <div class="form-group mt-1">
+                                                    <input type="radio"
+                                                           name="type"
+                                                           value="1"
+                                                           checked
+                                                           class="switchery"
+                                                           data-color="success"/>
+                                                    <label
+                                                        class="card-title ml-1">
+                                                        {{__('admin/category.Category')}}
+                                                    </label>
 
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group mt-1">
+                                                    <input type="radio"
+                                                           name="type"
+                                                           value="2"
+                                                           class="switchery" data-color="success"/>
+                                                    <label
+                                                        class="card-title ml-1">
+                                                        {{__('admin/category.Subcategory')}}
+                                                    </label>
+
+                                                </div>
+                                            </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
@@ -135,5 +193,18 @@
             </div>
         </div>
     </div>
+@stop
+@section('script')
 
+    <script>
+        $('input:radio[name="type"]').change(
+            function(){
+                if (this.checked && this.value == '2') {  // 1 if main cat - 2 if sub cat
+                    $('#cats_list').removeClass('hidden');
+
+                }else{
+                    $('#cats_list').addClass('hidden');
+                }
+            });
+    </script>
 @stop

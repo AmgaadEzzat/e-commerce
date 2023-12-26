@@ -18,6 +18,9 @@ return [
     'Category name' => 'Category name',
     'Update' => 'Update',
     'Back' => 'Back',
-    'Add' => 'Add'
-
+    'Add' => 'Add',
+    'Choose the main category' => 'Choose the main category',
+    'Please choose the category' => 'Please choose the category',
+    'Category' => 'Category',
+    'Subcategory' => 'Subcategory'
 ];

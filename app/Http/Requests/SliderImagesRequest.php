@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Enumerations\CategoryType;
+use App\Rules\ProductQty;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class SliderImagesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +26,9 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'type' => 'required|in:1,2',
-            'slug' => 'required|unique:categories,slug,'.$this->id,
+            'document' => 'required|array|min:1',
+            'document.*' => 'required|string',
         ];
     }
+
 }

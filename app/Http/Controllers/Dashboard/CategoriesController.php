@@ -19,7 +19,8 @@ class CategoriesController extends Controller
 
     public function create()
     {
-        return view('admin.categories.create');
+        $categories = Category::select('id','parent_id')->get();
+        return view('admin.categories.create', compact('categories'));
     }
 
     public function store(CategoryRequest $request)
@@ -27,7 +28,9 @@ class CategoriesController extends Controller
         try {
             DB::beginTransaction();
             $request = checkRequest($request);
+            $request = checkCategory($request);
             $category = new Category;
+            $category->parent_id = $request->parent_id;
             $category->slug = $request->slug;
             $category->is_active = $request->is_active;
             $category->name = $request->name;

@@ -18,5 +18,9 @@ return [
     'Category name' => 'اسم الفئه',
     'Update' => 'تحديث',
     'Back' => 'تراجع',
-    'Add' => 'اضافه'
+    'Add' => 'اضافه',
+    'Choose the main category' => 'اختر الفئه الرئيسيه',
+    'Please choose the category' => 'من فضلك اختر الفئه',
+    'Category' => 'الفئه الرئيسيه',
+    'Subcategory' => 'الفئه الفرعيه'
 ];
